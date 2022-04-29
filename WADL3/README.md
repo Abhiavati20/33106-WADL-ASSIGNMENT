@@ -1,7 +1,7 @@
 # wad-assignment3
 # Assignment 3A
 #### serving a static website
-![1st screenshot](https://github.com/Abhiavati20/wad-assignment3/blob/main/screenshot/Screenshot%20from%202022-04-24%2013-21-48.png)
+![1st screenshot](https://github.com/Abhiavati20/33106-WADL-ASSIGNMENT/blob/main/WADL3/screenshot/Screenshot%20from%202022-04-29%2018-51-37.png)
 # Assignment 3B
 #### Four CRUD operation
 ##### Create using POST method
