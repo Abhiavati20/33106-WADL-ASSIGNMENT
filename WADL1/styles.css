@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+.textarea {
+  background-color: #d4d4d4;
+  border: 0px;
+  outline: none;
+  padding: 1rem;
+  resize: none;
+}
+input[type='file'] {
+  display: none;
+}
+
+.tooltip {
+  text-align: left;
+}
+
+.tooltip h3 {
+  margin: 0px 0px 10px 0px;
+}
+
+.shareLinkButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  margin: 12px 0px 0px 0px;
+  font-weight: bold;
+}
+
+.copied {
+  display: none;
+  margin: 12px 0px 0px 0px;
+}
+
+.tooltip .bottom {
+  min-width: 280px;
+  /*max-width:400px;*/
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 20px;
+  color: #121212;
+  background-color: #cec98d;
+  font-weight: normal;
+  font-size: 13px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 99999999;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.tooltip .bottom i {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -12px;
+  width: 24px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.tooltip .bottom i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 50%;
+  transform: translate(-50%, 50%) rotate(45deg);
+  background-color: #cec98d;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.tooltip .input {
+  width: 200px;
+  padding: 8px;
+  background-color: #c9e9719a;
+}
+.header-button {
+  background-color: #c9e9719a;
+  border: black;
+  cursor: pointer;
+  margin-right: 2vw;
+  min-width: 8%;
+  margin-top: 7px;
+  outline: none;
+  margin-bottom: 7px;
+  padding: 7px;
+  transition: 0.6s;
+  border-radius: 5px;
+}
+
+.header-button:hover {
+  box-shadow: 3px 1px 5px rgb(76, 77, 75);
+  transform: scale(1.09);
+  z-index: 1;
+}
+
+.color-button-container {
+  width: 50%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-button-row {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.color-button {
+  height: 20px;
+  width: 20px;
+  border: 1px;
+  border-radius: 50%;
+  margin: 1px;
+}
+
+.color-button::-moz-focus-inner {
+  border: 1;
+  border-radius: 50%;
+}
+
+@media screen and (max-width:768px) {
+  #clock{
+      display: none;
+  }
+}

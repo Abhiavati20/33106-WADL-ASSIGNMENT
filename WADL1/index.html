@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/82f797382f.js" crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+    <title>MyNotePad</title>
+
+</head>
+
+<body>
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#">MyNotePad</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav  mx-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown m-2 d-flex justify-content-center">
+
+                        <a class="nav-link dropdown-toggle" style="color: #252525;" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Files
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a id="newScreen" class="dropdown-item btn" href="/" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> New
+                                </a>
+                            </li>
+                            <li>
+                                <button id="clearScreen" onclick="clearText()" class="dropdown-item">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                            </li>
+                            <li>
+                                <button id="download" class="dropdown-item" onclick="download()">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </li>
+                            <li>
+                                <label for="upload" class="dropdown-item">
+                                    <input id="upload" type="file" />
+                                    <i class="fas fa-upload"></i> Upload
+                                </label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown m-2 d-flex justify-content-center">
+
+                        <a class="nav-link dropdown-toggle" style="color: #252525;" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            View
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <button id="fullScreen" class="dropdown-item" onclick="openFullscreen()">
+                                    <i class="fas fa-expand"></i> Full Screen
+                                </button>
+                            </li>
+                            <li>
+                                <button id="closeFullScreen" class="dropdown-item" onclick="closeFullscreen()">
+                                    <i class="fas fa-compress"></i> Close Full Screen
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li style="margin:0.55rem 0rem;">
+                        <button class="btn  btn-sm-secondary w-100 align-content-center " type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                            aria-controls="offcanvasScrolling">
+                            More
+                        </button>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="clock" class="m-auto text-center align-content-center"><b>Time : </b><span id="time"></span></div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start w-50 data-bs-scroll=" true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">MyNotePad</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body ">
+
+            <ul class="list-unstyled " aria-labelledby="navbarDropdown">
+                <li class="nav-item dropdown list-unstyled">
+                    <a class="btn" href="./htmlEditor.html">Html Editor &lt;/&gt; </a>
+                </li>
+                <li>
+                    <button id="upper" class="dropdown-item" onclick="TextUpper()">
+                        UpperCase
+                    </button>
+                </li>
+                <li>
+                    <button id="lower" class="dropdown-item" onclick="TextLower()">
+                        LowerCase
+                    </button>
+                </li>
+                <li>
+                    <button id="lower" class="btn dropdown-item" onclick="TextCapital()">
+                        Capitalize
+                    </button>
+                </li>
+                <li>
+                    <button id="bold" class="dropdown-item" onclick="TextBold()">
+                        <i class="fas fa-bold"></i> Bold your text
+                    </button>
+                </li>
+
+                <li>
+                    <button id="italic" class="dropdown-item" onclick="TextItalic()">
+                        <i class="fas fa-italic"></i> Italic Text
+                    </button>
+                </li>
+                <li>
+                    <button id="italic" class="dropdown-item " onclick="TextLeft()">
+                        <i class="fas fa-align-left"></i> Align left
+                    </button>
+                </li>
+                <li>
+                    <button id="italic" class="dropdown-item " onclick="TextCenter()">
+                        <i class="fas fa-align-center"></i> Align center
+                    </button>
+                </li>
+                <li>
+                    <button id="italic" class="dropdown-item " onclick="TextRight()">
+                        <i class="fas fa-align-right "></i> Align right
+                    </button>
+                </li>
+
+                <li class="nav-item list-unstyled dropdown ">
+
+                    <a class="nav-link dropdown-toggle" style="color: #252525;" href="#" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Styles
+                    </a>
+                    <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                        <li>
+                            <div class="font-increasor">
+                                <snap>Font Size: </snap>
+                                <button class="btn btn-sm-primary" onclick="resizeText(1)"><i
+                                        class="fas fa-text-height"></i>+</button>
+                                <button class="btn btn-sm-primary" onclick="resizeText(-1)"><i
+                                        class="fas fa-text-height"></i>-</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="colorbox">
+
+                                <div class="color-button-row">
+                                    <span>Background&nbsp;:&nbsp;</span>
+                                    <button class="color-button" style="background-color: #dbdbdb !Important"
+                                        onclick="updateBackgroundColor('#fff')">
+                                    </button>
+
+                                    <button class="color-button" style="background-color: #a6d5cb !Important"
+                                        onclick="updateBackgroundColor('#d5a6bd')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #b4a7d6 !Important"
+                                        onclick="updateBackgroundColor('#b4a7d6')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #9fc5e8 !Important"
+                                        onclick="updateBackgroundColor('#9fc5e8')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a4c2f4 !Important"
+                                        onclick="updateBackgroundColor('#a4c2f4')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a2c4c9 !Important"
+                                        onclick="updateBackgroundColor('#a2c4c9')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #b6d7a8 !Important"
+                                        onclick="updateBackgroundColor('#b6d7a8')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #ffe599 !Important"
+                                        onclick="updateBackgroundColor('#ffe599')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #f9cb9c !Important"
+                                        onclick="updateBackgroundColor('#f9cb9c')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #ea9999 !Important"
+                                        onclick="updateBackgroundColor('#ea9999')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #dd7e6b !Important"
+                                        onclick="updateBackgroundColor('#dd7e6b')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a0522d !Important"
+                                        onclick="updateBackgroundColor('#a0522d')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #434343 !Important"
+                                        onclick="updateBackgroundColor('#434343')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #252525 !Important"
+                                        onclick="updateBackgroundColor('#252525')">
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="colorbox">
+
+                                <div class="color-button-row">
+                                    <snap>Font Color : </snap>
+                                    <button class="color-button" style="background-color: #dbdbdb !Important"
+                                        onclick="updateFontColor('#dbdbdb')">
+                                    </button>
+
+                                    <button class="color-button" style="background-color: #d5a6bd !Important"
+                                        onclick="updateFontColor('#d5a6bd')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #b4a7d6 !Important"
+                                        onclick="updateFontColor('#b4a7d6')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #9fc5e8 !Important"
+                                        onclick="updateFontColor('#9fc5e8')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a4c2f4 !Important"
+                                        onclick="updateFontColor('#a4c2f4')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a2c4c9 !Important"
+                                        onclick="updateFontColor('#a2c4c9')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #b6d7a8 !Important"
+                                        onclick="updateFontColor('#b6d7a8')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #ffe599 !Important"
+                                        onclick="updateFontColor('#ffe599')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #f9cb9c !Important"
+                                        onclick="updateFontColor('#f9cb9c')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #ea9999 !Important"
+                                        onclick="updateFontColor('#ea9999')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #dd7e6b !Important"
+                                        onclick="updateFontColor('#dd7e6b')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #a0522d !Important"
+                                        onclick="updateFontColor('#a0522d')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #434343 !Important"
+                                        onclick="updateFontColor('#434343')">
+                                    </button>
+                                    <button class="color-button" style="background-color: #252525 !Important"
+                                        onclick="updateFontColor('#252525')">
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <div id='logout'>
+                    <li class="nav-item dropdown list-unstyled">
+                        <a class="btn" href="./signup.html" target="_blank"><i class="fas fa-sign-in-alt"></i> Sign
+                            Up</a>
+                    </li>
+                </div>
+                <li class="nav-item dropdown list-unstyled">
+                    <div style="
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+                        border-radius: 10px;
+                        margin: 0 auto;
+                        justify-content: center;
+                        ">
+
+                        <canvas id="myChart" style="
+                                
+                                max-height: 100%;
+                                max-width: 100%;
+                                justify-content: center;
+                                align-items: center;
+                                
+                                ">
+                        </canvas>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- writing section -->
+    <main>
+        <form id="textform" class="form" action="download.html" method="post" name="textform" target="download_frame">
+            <label>
+                <textarea id="text" class="textarea" cols="100" rows="30" name="text"
+                    onclick="if(cleanRequired)document.textform.text.value=''; cleanRequired = 0;">Enter or paste your text here.</textarea>
+            </label>
+        </form>
+    </main>
+    <footer style="background-color: #d4d4d4; text-align: center;">
+        &copy; MyNotePad
+</body>
+<script type="text/javascript">
+    function sizeIt() {
+        document.forms[0].elements[0].style.width = (innerWidth) + 'px';
+        document.forms[0].elements[0].style.height = (innerHeight - 45) + 'px';
+    }
+    sizeIt();
+    window.onresize = sizeIt;
+
+    document.getElementById('text').addEventListener('keydown', function (e) {
+        if (e.key == 'Tab') {
+            e.preventDefault();
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+
+            // set textarea value to: text before caret + tab + text after caret
+            this.value = this.value.substring(0, start) +
+                "\t" + this.value.substring(end);
+
+            // put caret at right position again
+            this.selectionStart =
+                this.selectionEnd = start + 1;
+        }
+    })
+
+    document.getElementById("closeFullScreen").style.display = "none";
+    setCleanRequired(1);
+    setContent();
+    getRandomQuote();
+</script>
+
+<!-- upload script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = [
+        'Javascript ',
+        'Html',
+        'Css',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [
+                "#2ecc71",
+                "#3498db",
+                "#e74c3c",
+            ],
+            data: [20.9, 67.1, 12],
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Built Using Following Technology'
+                }
+            }
+        },
+    };
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+<script>
+    let input = document.querySelector('input')
+    let textarea = document.querySelector('textarea')
+
+    input.addEventListener('change', () => {
+        let files = input.files;
+
+        if (files.length == 0) return;
+
+        const file = files[0];
+
+        let reader = new FileReader();
+
+        reader.onload = (e) => {
+            const file = e.target.result;
+
+            const lines = file.split(/\r\n|\n/);
+            textarea.value = lines.join('\n');
+
+        };
+
+        reader.onerror = (e) => alert(e.target.error.name);
+
+        reader.readAsText(file);
+        setCleanRequired(0);
+    });
+    let div = document.getElementById('logout');
+    let userName = localStorage.getItem('name');
+    if (userName.length !== 0) {
+        div.innerHTML = '';
+        div.innerHTML += `<li class="nav-item d-flex align-content-center dropdown list-unstyled">`
+            + userName +
+            `</li>` + `<button class='btn btn-info' onclick='logout()'>Logout</button>`
+    }
+</script>
+
+</html>

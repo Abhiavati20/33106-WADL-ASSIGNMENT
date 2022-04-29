@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
+        integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Technology Used</title>
+</head>
+
+<body>
+    <div style="
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 10px;
+        margin: 0 auto;
+        justify-content: center;
+        ">
+
+        <canvas id="myChart" style="
+                
+                max-height: 100%;
+                max-width: 100%;
+                justify-content: center;
+                align-items: center;
+                margin: 10rem auto;
+                
+                ">
+        </canvas>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = [
+        'Javascript ',
+        'Html',
+        'Css',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [
+                "#2ecc71",
+                "#3498db",
+                "#e74c3c",
+            ],
+            data: [20.9, 67.1, 12],
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Built Using Following Technology'
+                }
+            }
+        },
+    };
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
+
+</html>
